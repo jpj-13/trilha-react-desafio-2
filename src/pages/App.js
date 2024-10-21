@@ -16,7 +16,7 @@ function App() {
 
   const handleSearchRepo = async () => {
 
-    const {data} = await api.get(`repos/${currentRepo}`)
+    const {data} = await api.get(`repos/jpj-13/${currentRepo}`)
 
     if(data.id){
 
@@ -34,9 +34,11 @@ function App() {
   }
 
   const handleRemoveRepo = (id) => {
-    console.log('Removendo registro', id);
-
-    // utilizar filter.
+    const find = repos.filter((idDelete) => {
+      return idDelete.id !== id
+    })
+    setRepos(find);
+    setCurrentRepo('')
   }
 
 
